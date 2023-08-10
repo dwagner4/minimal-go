@@ -19,7 +19,7 @@ export const Auth = (props) =>
   const { setIsAuth } = props
 
   const appServices = useContext(AppContext)
-  const [ state, send, raise, localservice ] = useActor(appServices.appMachineService)
+  // const [ state, send, raise, localservice ] = useActor(appServices.appMachineService)
 
 
   const signInWithGoogle = async (props) => 
@@ -28,11 +28,11 @@ export const Auth = (props) =>
       console.log("in login")
       cookies.set("auth-token", result.user.refreshToken)
       // setIsAuth(true)
-      send({type: 'LOGIN'})
+      // send({type: 'LOGIN'})
       console.log(result.user)
     } catch (err) {
       console.log(err)
-      send({type: 'LOGIN_ERROR'})
+      // send({type: 'LOGIN_ERROR'})
     }
   }
 
@@ -41,14 +41,14 @@ export const Auth = (props) =>
     await signOut(auth)
     cookies.remove("auth-token")
     console.log("in logout")
-    send({type: 'LOGOUT'})
+    // send({type: 'LOGOUT'})
     // setIsAuth(false)
     // setRoom(null)
   } 
 
   return <div className="auth">
     {
-      state.matches('auth') ? <SignIn dosignin={ signInWithGoogle }/> : <SignOut dosignout={signUserOut}/>
+      // state.matches('auth') ? <SignIn dosignin={ signInWithGoogle }/> : <SignOut dosignout={signUserOut}/>
     }
   </div>
 }

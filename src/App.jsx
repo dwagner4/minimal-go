@@ -6,6 +6,11 @@ import { appMachine } from './appMachine.js'
 import { createActorContext } from '@xstate/react'
 
 import {GoExperience} from './go/GoExperience.jsx'
+import { Auth } from './components/auth/Auth.jsx'
+import { Chat } from './components/chat/Chat.jsx'
+import { GameNego } from './components/gamenego/GameNego.jsx'
+import { Menu } from './components/menu/Menu.jsx'
+import { Splash } from './components/splash/Splash.jsx'
 
 export const AppContext = createActorContext(appMachine)
 
@@ -27,7 +32,11 @@ function App() {
         <color attach="background" args={["#ececec"]} />
         <GoExperience />
       </Canvas>
-
+      <Auth />
+      <Chat />
+      <GameNego />
+      <Menu />
+      <Splash />
     </AppContext.Provider>
   );
 }
