@@ -2,7 +2,7 @@ import './App.css';
 import { Canvas } from "@react-three/fiber";
 
 import * as React from 'react';
-import { appMachine } from './appMachine.js'
+import { RootFSM } from './logic/RootFSM.js'
 import { createActorContext } from '@xstate/react'
 
 import {GoExperience} from './go/GoExperience.jsx'
@@ -12,7 +12,7 @@ import { GameNego } from './components/gamenego/GameNego.jsx'
 import { Menu } from './components/menu/Menu.jsx'
 import { Splash } from './components/splash/Splash.jsx'
 
-export const AppContext = createActorContext(appMachine)
+export const AppContext = createActorContext(RootFSM)
 
 console.log(AppContext)
 
