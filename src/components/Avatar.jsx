@@ -10,13 +10,10 @@ import { useControls } from "leva";
 
 export function Avatar(props) {
   const {animation, point} = props;
-  // const { headFollow, cursorFollow, wireframe } = useControls({
-  //   headFollow: false,
-  //   cursorFollow: false,
-  //   wireframe: false
-  // })
+
   const group = useRef();
-  const { nodes, materials } = useGLTF("models/dean.glb");
+  const { nodes, materials,  } = useGLTF("models/dean.glb");
+  console.log(nodes)
 
   const { animations: typingAnimation } = useFBX("animations/Typing.fbx")
   const { animations: standingAnimation } = useFBX("animations/StandingIdle.fbx")
@@ -32,11 +29,12 @@ export function Avatar(props) {
   
 
   const { mixer, actions } = useAnimations([typingAnimation[0], standingAnimation[0], fallingAnimation[0], sittingAnimation[0], getupAnimation[0]], group);
-  console.log(mixer)
-  console.log(actions["GetUp"])
+
+
   // actions["GetUp"].repetitions
  
-  
+  // const rightArmBone = group.current.getObjectByName("Head")
+  // console.log(group.current.getObjectByName)
 
   useFrame((state) => {
     // if(headFollow) {
@@ -47,8 +45,12 @@ export function Avatar(props) {
     //   const target = new THREE.Vector3(state.mouse.x, state.mouse.y, 1)
     //   group.current.getObjectByName("Spine2").lookAt(target);
     // }
+    const rightShoulderBone = group.current.getObjectByName("RightShoulder")
+    const rightArmBone = group.current.getObjectByName("RightArm")
+    const rightForeArmBone = group.current.getObjectByName("RightForeArm")
+
     if(point) {
-      group.current.getObjectByName("RightForeArm").lookAt(state.camera.position);
+      rightArmBone.lookAt(state.camera.position);
     }
   })
   
